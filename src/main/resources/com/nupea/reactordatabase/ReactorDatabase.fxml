@@ -15,7 +15,7 @@
 <?import org.controlsfx.control.CheckComboBox?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nupea.reactordatabase.ReactorDatabaseController">
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nupea.reactordatabase.ReactorDatabaseController">
    <children>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="495.0" prefWidth="869.0">
          <center>
@@ -66,7 +66,7 @@
          <left>
             <VBox prefHeight="442.0" prefWidth="36.0" spacing="3.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="3.0">
+                  <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="42.0">
                      <graphic>
                         <FontIcon iconLiteral="far-folder-open" iconSize="18" text="" />
                      </graphic>
@@ -77,6 +77,15 @@
                   <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="42.0">
                      <graphic>
                         <FontIcon iconLiteral="far-save" iconSize="18" />
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Save File" />
+                     </tooltip>
+                  </Button>
+                  <Separator prefHeight="0.0" prefWidth="37.0" />
+                  <Button mnemonicParsing="false" onAction="#launchReactorDataEditor" prefHeight="32.0" prefWidth="42.0">
+                     <graphic>
+                        <FontIcon iconLiteral="fas-plus" iconSize="18" />
                      </graphic>
                      <tooltip>
                         <Tooltip text="Save File" />

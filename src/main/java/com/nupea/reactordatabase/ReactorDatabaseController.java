@@ -5,6 +5,8 @@
 package com.nupea.reactordatabase;
 
 import com.nupea.reactordatabase.data.CharacteristicCategory;
+import com.nupea.reactordatabase.data.Reactor;
+import com.nupea.reactordatabase.dialog.ReactorDialog;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -30,8 +32,11 @@ import org.controlsfx.control.spreadsheet.SpreadsheetView;
  * @author jmburu
  */
 public class ReactorDatabaseController implements Initializable {
+    
     @FXML
-    VBox selectionBox;
+    StackPane root;
+    ReactorDialog reactorEditorDialog = new ReactorDialog();
+    
     @FXML
     CheckComboBox<String> sizeComboBox;
     @FXML
@@ -114,6 +119,8 @@ public class ReactorDatabaseController implements Initializable {
         spreadSheet.setEditable(false);
         initGrid();
         sheetPane.getChildren().add(spreadSheet);
+        
+        root.getChildren().add(reactorEditorDialog);
     }
     
     private void applyAllSelectedTechnology(){
@@ -158,6 +165,13 @@ public class ReactorDatabaseController implements Initializable {
         //}
         grid.setRows(rows);
         spreadSheet.setGrid(grid);
+    }
+    
+    public void launchReactorDataEditor(ActionEvent e){
+        reactorEditorDialog.setReactor(new Reactor());
+        reactorEditorDialog.showAndWait(result ->{
+            
+        });
     }
     
 }

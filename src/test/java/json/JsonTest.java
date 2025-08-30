@@ -39,7 +39,7 @@ public class JsonTest {
         ObjectMapper mapper = new ObjectMapper();
         mapper.writerWithDefaultPrettyPrinter()
               .writeValue(new File("C:\\Users\\jmburu\\Documents\\NuPEA Work\\category.json"), reactor);
-              */
+             
         // --- Read the JSON back into a Reactor object ---
         ObjectMapper mapper = new ObjectMapper();
         Reactor reactorInfo = mapper.readValue(new File("C:\\Users\\jmburu\\Documents\\NuPEA Work\\category.json"), Reactor.class);
@@ -52,5 +52,6 @@ public class JsonTest {
                 System.out.println("    " + k + " = " + v)
             );
         });
+ */
     }
 }

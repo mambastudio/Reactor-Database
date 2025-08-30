@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<fx:root maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="531.0" prefWidth="1058.0" type="BorderPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <SplitPane dividerPositions="0.3503787878787879" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <items>
+            <VBox spacing="2.0" SplitPane.resizableWithParent="false">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="2.0">
+                     <children>
+                        <Label text="Reactor Type" />
+                        <TextField editable="false" maxWidth="1.7976931348623157E308" prefWidth="20.0" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0">
+                           <graphic>
+                              <FontIcon iconLiteral="far-edit" iconSize="16" selectionEnd="10" />
+                           </graphic>
+                        </Button>
+                        <Button disable="true" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0">
+                           <graphic>
+                              <FontIcon iconLiteral="far-thumbs-up" iconSize="16" selectionEnd="10" />
+                           </graphic>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets right="2.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <ListView fx:id="categoriesListView" fixedCellSize="50.0" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" />
+                     </VBox.margin></ListView>
+               </children>
+            </VBox>
+            <StackPane fx:id="viewPort" prefHeight="150.0" prefWidth="200.0">
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding></StackPane>
+         </items>
+      </SplitPane>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="5.0" BorderPane.alignment="CENTER_LEFT">
+         <BorderPane.margin>
+            <Insets top="2.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+   <top>
+      <HBox alignment="CENTER_LEFT" prefWidth="200.0" spacing="2.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <FontIcon iconLiteral="fas-plus" iconSize="14" />
+               </graphic>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="2.0" />
+         </padding>
+      </HBox>
+   </top>
+</fx:root>

@@ -1,5 +1,8 @@
+com\nupea\reactordatabase\dialog\ReactorDialogPane.class
+com\nupea\reactordatabase\data\CharacteristicCategory.class
+com\nupea\reactordatabase\data\ReactorUtils.class
+com\nupea\reactordatabase\ReactorDatabase.class
 com\nupea\reactordatabase\data\Reactor.class
 com\nupea\reactordatabase\ReactorDatabaseController.class
-com\nupea\reactordatabase\data\CharacteristicCategory.class
+com\nupea\reactordatabase\dialog\ReactorDialog.class
 com\nupea\reactordatabase\Launcher.class
-com\nupea\reactordatabase\ReactorDatabase.class
