@@ -12,20 +12,20 @@ import java.util.Map;
  * @author jmburu
  */
 public class CharacteristicCategory {
-    private String category;                  // no final → mutable
-    private final Map<String, Object> info;   // map contents still mutable
+    private String category;
+    private final Map<String, FieldValue<?>> info;
 
     public CharacteristicCategory() {
         this.category = "";
         this.info = new HashMap<>();
     }
-    
+
     public CharacteristicCategory(String category) {
         this.category = category;
         this.info = new HashMap<>();
     }
 
-    // --- category accessors ---
+    // --- accessors ---
     public String getCategory() {
         return category;
     }
@@ -34,25 +34,21 @@ public class CharacteristicCategory {
         this.category = category;
     }
 
-    // --- map mutators ---
-    public void put(String key, Object value) {
-        info.put(key, value);
+    // --- mutators ---
+    public void put(String key, FieldValue<?> fieldValue) {
+        info.put(key, fieldValue);
     }
 
-    public Object get(String key) {
+    public FieldValue<?> get(String key) {
         return info.get(key);
     }
 
-    public Object remove(String key) {
+    public FieldValue<?> remove(String key) {
         return info.remove(key);
     }
 
-    public boolean containsKey(String key) {
-        return info.containsKey(key);
-    }
-
-    public Map<String, Object> getInfo() {
-        return info; // exposes live mutable map
+    public Map<String, FieldValue<?>> getInfo() {
+        return info;
     }
 
     @Override

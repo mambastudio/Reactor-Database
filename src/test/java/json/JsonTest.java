@@ -6,8 +6,11 @@ package json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nupea.reactordatabase.data.CharacteristicCategory;
+import com.nupea.reactordatabase.data.FieldValue;
 import com.nupea.reactordatabase.data.Reactor;
+import com.nupea.reactordatabase.data.Reactor.ReactorType;
 import java.io.File;
+import java.io.IO;
 import java.io.IOException;
 
 /**
@@ -53,5 +56,30 @@ public class JsonTest {
             );
         });
  */
+        test2();
+    }
+    
+    public void test2() throws IOException{
+        CharacteristicCategory specs = new CharacteristicCategory("Specs");
+
+        specs.put("power", new FieldValue<>(Double.class, 1000.0));
+        specs.put("coolant", new FieldValue<>(String.class, "Water"));
+        specs.put("type", new FieldValue<>(ReactorType.class, ReactorType.ADS));
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writerWithDefaultPrettyPrinter()
+              .writeValue(new File("C:\\Users\\user\\Documents\\File Examples\\specs.json"), specs);
+
+        CharacteristicCategory readBack =
+                mapper.readValue(new File("C:\\Users\\user\\Documents\\File Examples\\specs.json"), CharacteristicCategory.class);
+
+        IO.println(readBack);
+        IO.println(readBack.getInfo());
+        
+        var type = readBack.get("type");
+        var val = type.getValue();
+        
+        IO.println((val instanceof String));
+        
     }
 }

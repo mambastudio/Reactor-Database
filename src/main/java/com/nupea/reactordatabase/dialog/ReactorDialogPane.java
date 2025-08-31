@@ -69,7 +69,8 @@ public class ReactorDialogPane extends BorderPane{
         ObservableList<ObservableList<SpreadsheetCell>> rows = FXCollections.observableArrayList();
         for (int row = 0; row < grid.getRowCount(); ++row) {
             final ObservableList<SpreadsheetCell> list = FXCollections.observableArrayList();
-            var rowCell = SpreadsheetCellType.STRING.createCell(row, 0, 1, 1, (String) new ArrayList(category.getInfo().keySet()).get(row));            
+            var rowCell = SpreadsheetCellType.STRING.createCell(row, 0, 1, 1, (String) new ArrayList(category.getInfo().keySet()).get(row));    
+            rowCell.setEditable(false);
             list.add(rowCell);
             rows.add(list);
         }

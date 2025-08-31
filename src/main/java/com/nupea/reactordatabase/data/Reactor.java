@@ -20,16 +20,16 @@ public class Reactor {
     
     public enum ReactorType{PWR, BWR, HWR, SCWR, GCR, GFR, SFR, LFR, MSR, ADS, Others}
     
-    private String name;
+    private String acronym;
     private final List<CharacteristicCategory> categories;
     private final Map<String, CharacteristicCategory> categoryMap;
 
     public Reactor(){
         this("none");
     }
-    public Reactor(String name) {
-        Objects.requireNonNull(name);
-        this.name = name;
+    public Reactor(String acronym) {
+        Objects.requireNonNull(acronym);
+        this.acronym = acronym;
         this.categories = new ArrayList<>();
         this.categoryMap = new LinkedHashMap<>();
         initDefault();
@@ -45,13 +45,13 @@ public class Reactor {
         addCategory(new CharacteristicCategory("Reactor Pressure Vessel"));
         
         var plant = getCategory("Plant");
-        plant.put("Name", "-");
-        plant.put("Vendor", "-");
-        plant.put("Country", "");
-        plant.put("Type", "-");
-        plant.put("Design Status", "-");
-        plant.put("Moderator", "-");
-        plant.put("Coolant", "-");
+        plant.put("Full Name", new FieldValue<>(String.class, "-"));
+        plant.put("Vendor", new FieldValue<>(String.class, "-"));
+        plant.put("Country", new FieldValue<>(String.class, "-"));
+        plant.put("Type", new FieldValue<>(String.class, "-"));
+        plant.put("Design Status", new FieldValue<>(String.class, "-"));
+        plant.put("Moderator", new FieldValue<>(String.class, "-"));
+        plant.put("Coolant", new FieldValue<>(String.class, "-"));
     }
     
     // --- central helper to keep list + map in sync ---
@@ -91,18 +91,18 @@ public class Reactor {
         return !categories.isEmpty();
     }
 
-    // --- name accessors ---
-    public String getName() {
-        return name;
+    // --- acronym accessors ---
+    public String getAcronym() {
+        return acronym;
     }
 
-    public void setName(String name) {
-        Objects.requireNonNull(name);
-        this.name = name;
+    public void setAcronym(String acronym) {
+        Objects.requireNonNull(acronym);
+        this.acronym = acronym;
     }
 
     @Override
     public String toString() {
-        return name;
+        return acronym;
     }
 }
