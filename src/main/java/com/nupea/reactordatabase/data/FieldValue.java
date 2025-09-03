@@ -26,6 +26,10 @@ public class FieldValue<T> {
     public String getTypeName() {
         return type.getName(); // e.g. "java.lang.Double", "com.nupea.ReactorStatus"
     }
+    
+    public Class<T> type(){
+        return type;
+    }
 
     public T getValue() { return value; }
     public void setValue(T value) { this.value = value; }

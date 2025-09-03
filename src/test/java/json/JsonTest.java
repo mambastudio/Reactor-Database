@@ -9,7 +9,6 @@ import com.nupea.reactordatabase.data.CharacteristicCategory;
 import com.nupea.reactordatabase.data.FieldValue;
 import com.nupea.reactordatabase.data.Reactor;
 import java.io.File;
-import java.io.IO;
 import java.io.IOException;
 
 /**

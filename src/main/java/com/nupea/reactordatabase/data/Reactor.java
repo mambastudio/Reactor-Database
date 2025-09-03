@@ -6,7 +6,6 @@ package com.nupea.reactordatabase.data;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,7 +55,7 @@ public class Reactor {
         var reactorUnit = getCategory("Reactor Unit");
         reactorUnit.put("Neutron Spectrum", new FieldValue<>(String.class, "_"));
         reactorUnit.put("Reactor Thermal Output (MWth)", new FieldValue<>(String.class, "_"));
-        reactorUnit.put("Power Plant Output, Gross (MWe)", new FieldValue<>(String.class, "_"));
+        reactorUnit.put("Power Plant Output, Gross (MWe)", new FieldValue<>(Integer.class, 0));
         reactorUnit.put("Power Plant Output, Net (MWe)", new FieldValue<>(String.class, "_"));
         
         var reactorCoolantSystem = getCategory("Reactor Coolant System");
