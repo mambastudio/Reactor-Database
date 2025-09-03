@@ -54,9 +54,9 @@ public class Reactor {
         
         var reactorUnit = getCategory("Reactor Unit");
         reactorUnit.put("Neutron Spectrum", new FieldValue<>(String.class, "_"));
-        reactorUnit.put("Reactor Thermal Output (MWth)", new FieldValue<>(String.class, "_"));
+        reactorUnit.put("Reactor Thermal Output (MWth)", new FieldValue<>(Integer.class, 0));
         reactorUnit.put("Power Plant Output, Gross (MWe)", new FieldValue<>(Integer.class, 0));
-        reactorUnit.put("Power Plant Output, Net (MWe)", new FieldValue<>(String.class, "_"));
+        reactorUnit.put("Power Plant Output, Net (MWe)", new FieldValue<>(Integer.class, 0));
         
         var reactorCoolantSystem = getCategory("Reactor Coolant System");
         reactorCoolantSystem.put("Core Coolant", new FieldValue<>(String.class, "_"));

@@ -5,6 +5,7 @@
 package com.nupea.reactordatabase.data;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -22,7 +23,7 @@ public class CharacteristicCategory {
 
     public CharacteristicCategory(String category) {
         this.category = category;
-        this.info = new HashMap<>();
+        this.info = new LinkedHashMap<>();
     }
 
     // --- accessors ---

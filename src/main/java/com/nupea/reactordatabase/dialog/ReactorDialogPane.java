@@ -7,6 +7,7 @@ package com.nupea.reactordatabase.dialog;
 import com.nupea.reactordatabase.data.CharacteristicCategory;
 import com.nupea.reactordatabase.data.FieldValue;
 import com.nupea.reactordatabase.data.Reactor;
+import com.nupea.reactordatabase.util.StrictIntegerCellType;
 import java.io.IO;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -164,7 +165,7 @@ public class ReactorDialogPane extends BorderPane{
     private SpreadsheetCell createCell(int row, int column, int rowSpan, int columnSpan, Object value){
         return switch(value.getClass()){
             case Class<?> c when c == String.class -> SpreadsheetCellType.STRING.createCell(row, column, rowSpan, columnSpan, (String) value);
-            case Class<?> c when c == Integer.class -> SpreadsheetCellType.INTEGER.createCell(row, column, rowSpan, columnSpan, (Integer) value);
+            case Class<?> c when c == Integer.class -> StrictIntegerCellType.STRICT_INT.createCell(row, column, rowSpan, columnSpan, (Integer) value);
             case Class<?> c when c == Double.class -> SpreadsheetCellType.DOUBLE.createCell(row, column, rowSpan, columnSpan, (Double) value);
             default -> throw new UnsupportedOperationException();
         };
