@@ -4,12 +4,8 @@
  */
 package com.nupea.reactordatabase.util;
 
-import java.io.IO;
-import java.util.function.UnaryOperator;
 import javafx.application.Platform;
 import javafx.scene.control.Control;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
 import javafx.util.StringConverter;
 import org.controlsfx.control.spreadsheet.SpreadsheetCell;
 import org.controlsfx.control.spreadsheet.SpreadsheetCellBase;

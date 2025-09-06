@@ -19,9 +19,9 @@ public class JsonTest {
     void main() throws IOException{
         CharacteristicCategory specs = new CharacteristicCategory("Specs");
 
-        specs.put("power", new FieldValue<>(Double.class, 1000.0));
-        specs.put("coolant", new FieldValue<>(String.class, "Water"));
-        specs.put("type", new FieldValue<>(Reactor.ReactorType.class, Reactor.ReactorType.ADS));
+        specs.put("power", FieldValue.of(Double.class, 1000.0));
+        specs.put("coolant", FieldValue.of(String.class, "Water"));
+        specs.put("type", FieldValue.of(Reactor.ReactorType.class, Reactor.ReactorType.ADS));
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.writerWithDefaultPrettyPrinter()

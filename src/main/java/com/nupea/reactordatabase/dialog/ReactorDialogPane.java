@@ -7,11 +7,15 @@ package com.nupea.reactordatabase.dialog;
 import com.nupea.reactordatabase.data.CharacteristicCategory;
 import com.nupea.reactordatabase.data.FieldValue;
 import com.nupea.reactordatabase.data.Reactor;
+import com.nupea.reactordatabase.util.MultiChoiceCellType;
+import com.nupea.reactordatabase.util.OptionCellType;
 import com.nupea.reactordatabase.util.StrictIntegerCellType;
 import java.io.IO;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -86,18 +90,16 @@ public class ReactorDialogPane extends BorderPane{
                         
             var key = (String) new ArrayList(category.getInfo().keySet()).get(row);
             
-            var field = category.getInfo().get(key);
+            var field = category.getInfo().get(key);            
+            var value = key;
             
-            var value0 = key;
-            var value1 = field.getValue();
-            
-            var rowCell0 = SpreadsheetCellType.STRING.createCell(row, 0, 1, 1, value0);    
-            var rowCell1 = createCell(row, 1, 1, 1, value1);    
+            var rowCell0 = SpreadsheetCellType.STRING.createCell(row, 0, 1, 1, value);    
+            var rowCell1 = createCell(row, 1, 1, 1, field);    
             
             rowCell0.setEditable(false);
             rowCell1.setStyle("-fx-alignment: CENTER;");
             
-            Text t = new Text(value0);
+            Text t = new Text(value);
             t.setFont(new Label().getFont());
             double w = t.getBoundsInLocal().getWidth() + 10;
             width = Math.max(width, w);
@@ -124,19 +126,17 @@ public class ReactorDialogPane extends BorderPane{
             final ObservableList<SpreadsheetCell> list = FXCollections.observableArrayList();
             var key = (String) new ArrayList(category.getInfo().keySet()).get(row);
             
-            var field = category.getInfo().get(key);
+            var field = category.getInfo().get(key);            
+            var value = key;
             
-            var value0 = key;
-            var value1 = field.getValue();
-            
-            var rowCell0 = SpreadsheetCellType.STRING.createCell(row, 0, 1, 1, value0);    
-            var rowCell1 = createCell(row, 1, 1, 1, value1);      
+            var rowCell0 = SpreadsheetCellType.STRING.createCell(row, 0, 1, 1, value);    
+            var rowCell1 = createCell(row, 1, 1, 1, field);      
             
             rowCell0.setEditable(false);
             rowCell1.setStyle("-fx-alignment: CENTER;");
 
             
-            Text t = new Text(value0);
+            Text t = new Text(value);
             t.setFont(new Label().getFont());
             double w = t.getBoundsInLocal().getWidth() + 10;
             width = Math.max(width, w);
@@ -162,12 +162,26 @@ public class ReactorDialogPane extends BorderPane{
         initGrid();
     }
         
-    private SpreadsheetCell createCell(int row, int column, int rowSpan, int columnSpan, Object value){
-        return switch(value.getClass()){
-            case Class<?> c when c == String.class -> SpreadsheetCellType.STRING.createCell(row, column, rowSpan, columnSpan, (String) value);
-            case Class<?> c when c == Integer.class -> StrictIntegerCellType.STRICT_INT.createCell(row, column, rowSpan, columnSpan, (Integer) value);
-            case Class<?> c when c == Double.class -> SpreadsheetCellType.DOUBLE.createCell(row, column, rowSpan, columnSpan, (Double) value);
-            default -> throw new UnsupportedOperationException();
+    private SpreadsheetCell createCell(int row, int column, int rowSpan, int columnSpan, FieldValue<?> field){
+        // 1. Multi-choice → CheckComboBox
+        if (field.isMultiSelect()) {
+            MultiChoiceCellType<Object> type =
+                new MultiChoiceCellType<>(new ArrayList<>((Set<Object>) field.getOptions()));
+            return type.createCell(row, column, rowSpan, columnSpan, (List<Object>) field.getValues());
+        }
+
+        // 2. Single-choice → ComboBox
+        if (field.getOptions() != null) {
+            OptionCellType<String> optionType = new OptionCellType<>(field.asStringOptions());
+            return optionType.createCell(row, column, rowSpan, rowSpan, field.asStringValue());
+        }
+    
+        // 3. Free values → map to known types
+        return switch (field.getType().getSimpleName()) {
+            case "String" -> SpreadsheetCellType.STRING.createCell(row, column, rowSpan, columnSpan, (String) field.getValue());
+            case "Integer" -> StrictIntegerCellType.STRICT_INT.createCell(row, column, rowSpan, columnSpan, (Integer) field.getValue());
+            case "Double" -> SpreadsheetCellType.DOUBLE.createCell(row, column, rowSpan, columnSpan, (Double) field.getValue());
+            default -> throw new UnsupportedOperationException("Unsupported type: " + field.getType());
         };
     }
 }

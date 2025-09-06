@@ -10,6 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  *
@@ -44,49 +45,51 @@ public class Reactor {
         addCategory(new CharacteristicCategory("Reactor Pressure Vessel"));
         
         var plant = getCategory("Plant");
-        plant.put("Full Name", new FieldValue<>(String.class, "-"));
-        plant.put("Vendor", new FieldValue<>(String.class, "-"));
-        plant.put("Country", new FieldValue<>(String.class, "-"));
-        plant.put("Type", new FieldValue<>(String.class, "-"));
-        plant.put("Design Status", new FieldValue<>(String.class, "-"));
-        plant.put("Moderator", new FieldValue<>(String.class, "-"));
-        plant.put("Coolant", new FieldValue<>(String.class, "-"));
+        plant.put("Full Name", FieldValue.of(String.class, "-"));
+        plant.put("Vendor", FieldValue.of(String.class, "-"));
+        plant.put("Country", FieldValue.of(String.class, "-"));
+        plant.put("Type", FieldValue.of(String.class, 
+                Set.of("PWR", "BWR", "HWR", "SCWR", "GCR", "GFR", "SFR", "LFR", "MSR", "ADS", "-"),
+                "-"));
+        plant.put("Design Status", FieldValue.of(String.class, "-"));
+        plant.put("Moderator", FieldValue.of(String.class, "-"));
+        plant.put("Coolant", FieldValue.of(String.class, "-"));
         
         var reactorUnit = getCategory("Reactor Unit");
-        reactorUnit.put("Neutron Spectrum", new FieldValue<>(String.class, "_"));
-        reactorUnit.put("Reactor Thermal Output (MWth)", new FieldValue<>(Integer.class, 0));
-        reactorUnit.put("Power Plant Output, Gross (MWe)", new FieldValue<>(Integer.class, 0));
-        reactorUnit.put("Power Plant Output, Net (MWe)", new FieldValue<>(Integer.class, 0));
+        reactorUnit.put("Neutron Spectrum", FieldValue.of(String.class, "_"));
+        reactorUnit.put("Reactor Thermal Output (MWth)", FieldValue.of(Integer.class, 0));
+        reactorUnit.put("Power Plant Output, Gross (MWe)", FieldValue.of(Integer.class, 0));
+        reactorUnit.put("Power Plant Output, Net (MWe)", FieldValue.of(Integer.class, 0));
         
         var reactorCoolantSystem = getCategory("Reactor Coolant System");
-        reactorCoolantSystem.put("Core Coolant", new FieldValue<>(String.class, "_"));
-        reactorCoolantSystem.put("Primary Coolant Flow Rate (kg/s)", new FieldValue<>(String.class, "_"));
-        reactorCoolantSystem.put("Reactor Operating Pressure (MPa)", new FieldValue<>(String.class, "_"));
-        reactorCoolantSystem.put("Coolant Inlet Temperature (°C", new FieldValue<>(String.class, "_"));
+        reactorCoolantSystem.put("Core Coolant", FieldValue.of(String.class, "_"));
+        reactorCoolantSystem.put("Primary Coolant Flow Rate (kg/s)", FieldValue.of(String.class, "_"));
+        reactorCoolantSystem.put("Reactor Operating Pressure (MPa)", FieldValue.of(String.class, "_"));
+        reactorCoolantSystem.put("Coolant Inlet Temperature (°C", FieldValue.of(String.class, "_"));
         
         var nuclearSteamSupplySystem = getCategory("Nuclear Steam Supply System");
-        nuclearSteamSupplySystem.put("Steam Flow Rate (kg/s)", new FieldValue<>(String.class, "_"));
-        nuclearSteamSupplySystem.put("Steam Pressure (MPa)", new FieldValue<>(String.class, "_"));
-        nuclearSteamSupplySystem.put("Steam Temperature (°C)", new FieldValue<>(String.class, "_"));
-        nuclearSteamSupplySystem.put("Feedwater Flow Rate (kg/s)", new FieldValue<>(String.class, "_"));
-        nuclearSteamSupplySystem.put("Feedwater Temperature (°C)", new FieldValue<>(String.class, "_"));
+        nuclearSteamSupplySystem.put("Steam Flow Rate (kg/s)", FieldValue.of(String.class, "_"));
+        nuclearSteamSupplySystem.put("Steam Pressure (MPa)", FieldValue.of(String.class, "_"));
+        nuclearSteamSupplySystem.put("Steam Temperature (°C)", FieldValue.of(String.class, "_"));
+        nuclearSteamSupplySystem.put("Feedwater Flow Rate (kg/s)", FieldValue.of(String.class, "_"));
+        nuclearSteamSupplySystem.put("Feedwater Temperature (°C)", FieldValue.of(String.class, "_"));
         
         var reactorCore = getCategory("Reactor Core");
-        reactorCore.put("Active Core Height (m)", new FieldValue<>(String.class, "_"));
-        reactorCore.put("Equivalent Core Diameeter (m)", new FieldValue<>(String.class, "_"));
-        reactorCore.put("Average Linear Rate (kW/kgU)", new FieldValue<>(String.class, "_"));
+        reactorCore.put("Active Core Height (m)", FieldValue.of(String.class, "_"));
+        reactorCore.put("Equivalent Core Diameeter (m)", FieldValue.of(String.class, "_"));
+        reactorCore.put("Average Linear Rate (kW/kgU)", FieldValue.of(String.class, "_"));
         
         var coreMaterials = getCategory("Core Materials");
-        coreMaterials.put("Fuel Material", new FieldValue<>(String.class, "_"));
-        coreMaterials.put("Cladding Material", new FieldValue<>(String.class, "_"));
-        coreMaterials.put("Enrichment Of Reload Fuel (wt%)", new FieldValue<>(String.class, "_"));
-        coreMaterials.put("Fuel Cycle Length (Months)", new FieldValue<>(String.class, "_"));
+        coreMaterials.put("Fuel Material", FieldValue.of(String.class, "_"));
+        coreMaterials.put("Cladding Material", FieldValue.of(String.class, "_"));
+        coreMaterials.put("Enrichment Of Reload Fuel (wt%)", FieldValue.of(String.class, "_"));
+        coreMaterials.put("Fuel Cycle Length (Months)", FieldValue.of(String.class, "_"));
         
         var reactorPressureVessel = getCategory("Reactor Pressure Vessel");
-        reactorPressureVessel.put("Inner Diameter Of Cylindrical Shell (mm)", new FieldValue<>(String.class, "_"));
-        reactorPressureVessel.put("Wall Thickness Of Cylindrical Shell (mm)", new FieldValue<>(String.class, "_"));
-        reactorPressureVessel.put("Base Material", new FieldValue<>(String.class, "_"));
-        reactorPressureVessel.put("Total Height, Inside (mm)", new FieldValue<>(String.class, "_"));
+        reactorPressureVessel.put("Inner Diameter Of Cylindrical Shell (mm)", FieldValue.of(String.class, "_"));
+        reactorPressureVessel.put("Wall Thickness Of Cylindrical Shell (mm)", FieldValue.of(String.class, "_"));
+        reactorPressureVessel.put("Base Material", FieldValue.of(String.class, "_"));
+        reactorPressureVessel.put("Total Height, Inside (mm)", FieldValue.of(String.class, "_"));
     }
     
     // --- central helper to keep list + map in sync ---
