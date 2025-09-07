@@ -49,7 +49,7 @@ public class Reactor {
         plant.put("Vendor", FieldValue.of(String.class, "-"));
         plant.put("Country", FieldValue.of(String.class, "-"));
         plant.put("Type", FieldValue.of(String.class, 
-                Set.of("PWR", "BWR", "HWR", "SCWR", "GCR", "GFR", "SFR", "LFR", "MSR", "ADS", "-"),
+                OptionSet.of("PWR", "BWR", "HWR", "SCWR", "GCR", "GFR", "SFR", "LFR", "MSR", "ADS", "Other", "-"),
                 "-"));
         plant.put("Design Status", FieldValue.of(String.class, "-"));
         plant.put("Moderator", FieldValue.of(String.class, "-"));

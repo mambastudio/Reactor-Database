@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -24,7 +23,7 @@ public class FieldValue<T> {
 
     private FieldValue(Class<T> type, Set<T> options, T value) {
         this.type = type;
-        this.options = new LinkedHashSet<>(options);
+        this.options = options;
         if (!options.contains(value)) {
             throw new IllegalArgumentException("Value not in options");
         }
@@ -33,7 +32,7 @@ public class FieldValue<T> {
 
     private FieldValue(Class<T> type, Set<T> options, List<T> values) {
         this.type = type;
-        this.options = new LinkedHashSet<>(options);
+        this.options = options;
         this.values = values;
         if (!options.containsAll(values)) {
             throw new IllegalArgumentException("Some values not in options");

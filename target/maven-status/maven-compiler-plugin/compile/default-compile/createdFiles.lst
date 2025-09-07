@@ -2,12 +2,6 @@ com\nupea\reactordatabase\util\StrictIntegerCellType$1.class
 com\nupea\reactordatabase\ReactorDatabase.class
 com\nupea\reactordatabase\util\OptionCellType.class
 com\nupea\reactordatabase\util\StrictIntegerCellType$3.class
-<<<<<<< Updated upstream
-=======
-com\nupea\reactordatabase\util\NumericField$3.class
-com\nupea\reactordatabase\data\OptionSet.class
-com\nupea\reactordatabase\data\Reactor$ReactorType.class
->>>>>>> Stashed changes
 com\nupea\reactordatabase\dialog\ReactorDialogPane.class
 com\nupea\reactordatabase\data\CharacteristicCategory.class
 com\nupea\reactordatabase\util\MultiChoiceCellType$1.class
@@ -20,6 +14,7 @@ com\nupea\reactordatabase\data\ReactorUtils.class
 com\nupea\reactordatabase\data\Reactor.class
 com\nupea\reactordatabase\util\NumericField.class
 com\nupea\reactordatabase\util\NumericField$3.class
+com\nupea\reactordatabase\data\OptionSet.class
 com\nupea\reactordatabase\data\Reactor$ReactorType.class
 com\nupea\reactordatabase\util\NumericField$2.class
 com\nupea\reactordatabase\util\OptionCellType$1.class

@@ -22,6 +22,6 @@ public class OptionSet<E> {
     }
     
     public static<E> Set<E> of(Collection<? extends E> collection){
-        return new LinkedHashSet<E>(collection);
+        return new LinkedHashSet<>(collection);
     }
 }
